@@ -1,0 +1,15 @@
+package repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+import model.GenreEntity;
+
+public interface GenreRepository extends CrudRepository<GenreEntity, Long> {
+	
+	@Override
+	default List<GenreEntity> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

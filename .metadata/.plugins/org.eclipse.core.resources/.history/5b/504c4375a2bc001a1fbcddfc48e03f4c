@@ -1,0 +1,23 @@
+package repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+
+import model.GenreEntity;
+
+public interface GenreRepository extends CrudRepository<GenreEntity, Long> {
+	
+	
+	//pozvace se u sevisu
+	
+	//vratice listu GenreEntity
+	@Override
+	List<GenreEntity> findAll();
+	
+	//vrednost koju mu prosledimo gleda sa kolonom name u Zanr tabeli
+	GenreEntity findDistincByName(String name);
+
+	@Query(value = "select name from entity_table", nativeQuery = true)
+}

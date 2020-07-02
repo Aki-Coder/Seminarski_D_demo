@@ -1,0 +1,12 @@
+package repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+import model.BookEntity;
+
+public interface BookRepository extends CrudRepository<BookEntity, Long> {
+	
+	@Override
+	 BookEntity save(BookEntity book);
+
+}

@@ -1,0 +1,14 @@
+package controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+//najvisi layer koji se pogodi
+
+@RestController
+@RequestMapping(value = "/book")
+public class BookController {
+	
+	//u kontroler ubaci service
+
+}

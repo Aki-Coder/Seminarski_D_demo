@@ -1,0 +1,12 @@
+package service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import repository.BookRepository;
+
+public class BookServiceImpl implements BookService {
+
+	//autowierd bookrepository
+	@Autowired
+	public BookRepository bookRepo;
+}

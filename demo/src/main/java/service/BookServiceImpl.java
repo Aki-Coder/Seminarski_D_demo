@@ -1,0 +1,16 @@
+package service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import repository.BookRepository;
+
+//klasa koja implemantira service
+public class BookServiceImpl implements BookService {
+	
+	//u service ubaci repozitorijum
+	//autowierd bookrepository
+	@Autowired
+	
+	//koristimo metode koje se u njemu nalaze
+	public BookRepository bookRepo;
+}

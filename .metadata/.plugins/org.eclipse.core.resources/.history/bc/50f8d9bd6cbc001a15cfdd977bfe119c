@@ -1,0 +1,90 @@
+package model;
+
+import java.math.BigDecimal;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity(name = "Book")
+public class BookEntity {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	private String title;
+	private String author;
+	private BigDecimal price;
+
+	public BookEntity() {
+		
+	}
+
+	private BookEntity(final Builder builder) {
+		
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	//kako doci do Builder-a
+	
+	public static Builder builder() {
+		return new Builder();
+	}
+	
+	
+	static class Builder {
+		
+		private Long id;
+		private String title;
+		private String author;
+		private BigDecimal price;
+		
+		public Builder withId(Long id) {
+			this.id = id;
+			return this;
+		}
+		
+		public Builder withTitle(String title) {
+			this.title = title;
+			return this;
+		}
+		
+		public Builder withAuthor(String author) {
+			this.author = author;
+			return this;
+		}
+		
+		public Builder withPrice(BigDecimal price) {
+			this.price = price;
+			return this;
+		}
+		
+		
+
+
+		public BookEntity build() {
+			return new BookEntity(this);
+
+		}
+		
+		
+
+	}
+
+}

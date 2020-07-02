@@ -1,0 +1,110 @@
+package model;
+
+import java.math.BigDecimal;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+//BUILD PATERN
+
+@Entity(name = "Book")
+public class BookEntity {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	
+	private Long id;
+	
+	@Column
+	private String title;
+	@Column
+	private String author;
+	@Column
+	private BigDecimal price;
+	
+	public BookEntity() {
+		
+	}
+	
+	//ovaj konstruktor se poziva u ugnjezdenoj klasi,
+	//sta god se set-uje u builder preko metoda withSomething()
+	public BookEntity(final Builder builder) {
+		this.id = builder.id;
+		this.title = builder.title;
+		this.author = builder.author;
+		this.price = builder.price;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	//kako doci do Builder-a
+	
+	public static Builder builder() {
+		return new Builder();
+	}
+	
+	
+	static class Builder {
+		
+		private Long id;
+		private String title;
+		private String author;
+		private BigDecimal price;
+		
+		public Builder withId(Long id) {
+			this.id = id;
+			return this;
+		}
+		
+		public Builder withTitle(String title) {
+			this.title = title;
+			return this;
+		}
+		
+		public Builder withAuthor(String author) {
+			this.author = author;
+			return this;
+		}
+		
+		public Builder withPrice(BigDecimal price) {
+			this.price = price;
+			return this;
+		}
+		
+		@ManyToMany
+		
+		
+		private Set<GenreEntity> genres;
+		
+		
+
+		//kad kaze build poziva konstruktor gornje klase i pravi novu instancu
+		public BookEntity build() {
+			return new BookEntity(this);
+
+		}
+		
+		
+
+	}
+
+}
