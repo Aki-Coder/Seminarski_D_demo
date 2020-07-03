@@ -1,0 +1,15 @@
+package service;
+
+import dto.BookDto;
+
+public interface BookService {
+	
+	//cuva selektovanu knjigu u bazi
+	//@param book book za cuvanje
+	//@return book if ako je sacuvana, null ako nije
+	
+	BookDto save(BookDto book);
+	
+	BookDto getById(Long id);
+
+}

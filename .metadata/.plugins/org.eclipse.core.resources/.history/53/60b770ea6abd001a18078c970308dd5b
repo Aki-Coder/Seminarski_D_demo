@@ -1,0 +1,25 @@
+package service;
+
+import org.springframework.stereotype.Service;
+
+import com.example.vezbanje.demo.dto.BookDto;
+
+
+/*Treba znati sta je biznis logika i sta spada u njen domen
+ * sta zelim da dobijem, obrisem ili neke liste objekata,paginacija - rade se na service layer*/
+
+
+@Service
+public interface BookService {
+	
+	//cuva selektovanu knjigu u bazi
+	//@param book book za cuvanje
+	//@return book if ako je sacuvana, null ako nije
+	
+	BookDto save(BookDto book);
+	
+	
+	//razivijanje u bookserimpl
+	BookDto getById(Long id);
+
+}

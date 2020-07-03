@@ -1,1 +1,7 @@
 1593722891141	Delete element
+1593807660245	Rename package 'dto'
+1593807689125	Rename package 'controller'
+1593807704544	Rename package 'mapper'
+1593807718864	Rename package 'model'
+1593807736752	Rename package 'repository'
+1593807748615	Rename package 'service'
