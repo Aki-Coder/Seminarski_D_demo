@@ -1,5 +1,7 @@
 package com.example.vezbanje.demo.mapper;
 
+import org.mapstruct.Mapper;
+import org.mapstruct.Mappings;
 import org.springframework.web.bind.annotation.Mapping;
 
 import com.example.vezbanje.demo.dto.BookDto;

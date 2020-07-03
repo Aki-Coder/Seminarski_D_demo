@@ -3,6 +3,7 @@ package com.example.vezbanje.demo.service;
 import org.springframework.stereotype.Service;
 
 import com.example.vezbanje.demo.dto.BookDto;
+import com.example.vezbanje.demo.model.BookEntity;
 
 
 /*Treba znati sta je biznis logika i sta spada u njen domen
@@ -16,10 +17,10 @@ public interface BookService {
 	//@param book book za cuvanje
 	//@return book if ako je sacuvana, null ako nije
 	
-	BookDto save(BookDto book);
+	BookEntity save(BookEntity book);
 	
 	
 	//razivijanje u bookserimpl
-	BookDto getById(Long id);
+	BookEntity getById(Long id);
 
 }

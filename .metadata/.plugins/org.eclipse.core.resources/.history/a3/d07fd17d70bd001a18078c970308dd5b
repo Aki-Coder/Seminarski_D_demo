@@ -1,0 +1,61 @@
+package com.example.vezbanje.demo.controller;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.vezbanje.demo.dto.BookDto;
+import com.example.vezbanje.demo.model.BookEntity;
+import com.example.vezbanje.demo.service.BookService;
+
+/*Odgovoran da pozove metode na service layer-u koja ce sve zivo da odradi
+ * ali controller ne zna o biznis logici kokom service upravlja 
+ * samo poziva metodu dobije sta treba i daje klijentu - response*/
+
+//najvisi layer koji se pogodi
+
+@RestController
+
+//nas resur /book tj knjiga
+@RequestMapping(value = "/book")
+public class BookController {
+	
+	//u kontroler ubaci service, da bi koristili njegove metode
+	@Autowired
+	BookService bookService;
+
+	//akcije vezane za knjigu kreiranje i pronalazanje na osnovu zadatog id
+	
+	/*na osnovu value vidi, 
+	 * consumes deo govori sta metoda prihvata kakvog je oblika dto objekat koji je
+	 * stigao od klijenta, u kom je formatu prihvatljiv da ga uzmem od klijenta 
+	 * produces format govori kako ga vracam nazad klijentu 
+	 * Rukuje se sa DataTransferObject  objektima koji se primaju i salju nikad se stavrni objekti ne salju na front ili klijentu
+	 * DTO objekat kopija stvarnog objekta koji ima sva polja ili neka koja nam trebaju*/
+	@PostMapping(path = "",consumes = APPLICATION_JSON_VALUE,produces = APPLICATION_JSON_VALUE)
+	//DTO dobijemo kad stavimo anotaciju request body
+	public ResponseEntity<BookDto> save(@RequestBody final BookDto book){
+		//pozovemo servis i njegovu metodu save
+		final BookDto response = bookService.save(book);
+		//sacuvao si,ali vrati i objekat koji si sacuvao
+		return new ResponseEntity<>(response,HttpStatus.OK);
+	}
+	
+	@GetMapping(path= "",produces = APPLICATION_JSON_VALUE)
+	//@RequestParam parametar koji prosledjujemo
+	public ResponseEntity<BookEntity> getBook(@RequestParam final Long id){
+		//iz servisa metoda
+		//uzmi knjigu na osnovu id
+		final BookEntity resposne = bookService.getById(id);
+		//da vidimo da li smo dobili tu prosledjenu knjigu
+		return new ResponseEntity<>(resposne,HttpStatus.OK);
+	}
+}

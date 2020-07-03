@@ -13,7 +13,6 @@ public interface BookRepository extends CrudRepository<BookEntity, Long> {
 	@Override
 	BookEntity save(BookEntity book);
 	
-	@Override
-	Optional<BookEntity> findById(final Long id);
+	boolean findById(final boolean b);
 
 }

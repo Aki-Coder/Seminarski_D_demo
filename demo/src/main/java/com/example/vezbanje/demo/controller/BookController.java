@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.vezbanje.demo.dto.BookDto;
+import com.example.vezbanje.demo.model.BookEntity;
 import com.example.vezbanje.demo.service.BookService;
 
 /*Odgovoran da pozove metode na service layer-u koja ce sve zivo da odradi
@@ -41,19 +42,19 @@ public class BookController {
 	 * DTO objekat kopija stvarnog objekta koji ima sva polja ili neka koja nam trebaju*/
 	@PostMapping(path = "",consumes = APPLICATION_JSON_VALUE,produces = APPLICATION_JSON_VALUE)
 	//DTO dobijemo kad stavimo anotaciju request body
-	public ResponseEntity<BookDto> save(@RequestBody final BookDto book){
+	public ResponseEntity<BookEntity> save(@RequestBody final BookEntity book){
 		//pozovemo servis i njegovu metodu save
-		final BookDto response = bookService.save(book);
+		final BookEntity response = bookService.save(book);
 		//sacuvao si,ali vrati i objekat koji si sacuvao
 		return new ResponseEntity<>(response,HttpStatus.OK);
 	}
 	
 	@GetMapping(path= "",produces = APPLICATION_JSON_VALUE)
 	//@RequestParam parametar koji prosledjujemo
-	public ResponseEntity<BookDto> getBook(@RequestParam final Long id){
+	public ResponseEntity<BookEntity> getBook(@RequestParam final Long id){
 		//iz servisa metoda
 		//uzmi knjigu na osnovu id
-		final BookDto resposne = bookService.getById(id);
+		final BookEntity resposne = bookService.getById(id);
 		//da vidimo da li smo dobili tu prosledjenu knjigu
 		return new ResponseEntity<>(resposne,HttpStatus.OK);
 	}
