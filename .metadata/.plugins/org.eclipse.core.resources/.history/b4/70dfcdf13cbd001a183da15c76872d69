@@ -1,14 +1,10 @@
 package controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-import dto.BookDto;
 import service.BookService;
 
 //najvisi layer koji se pogodi
@@ -29,10 +25,6 @@ public class BookController {
 	 * consumes deo govori sta metoda prihvata kakvog je oblika dto objekat koji je
 	 * stigao od klijenta, u kom je formatu prihvatljiv da ga uzmem od klijenta 
 	 * produces format govori kako ga vracam nazad klijentu 
-	 * Rukuje se sa DataTransferObject  objektima koji se primaju i salju nikad se stavrni objekti ne salju na front ili klijentu
-	 * DTO objekat kopija stvarnog objekta koji ima sva polja ili neka koja nam trebaju*/
+	 * Rukuje se sa DataTransferObject  objektima koji se primaju i salju nikad se stavrni objekti ne salju na front ili klijentu*/
 	@PostMapping(path = "",consumes = APPLICATION_JSON_VALUE,produces = APPLICATION_JSON_VALUE)
-	public ResponseEntity<BookDto> save(@RequestBody final BookDto book){
-		
-	}
 }

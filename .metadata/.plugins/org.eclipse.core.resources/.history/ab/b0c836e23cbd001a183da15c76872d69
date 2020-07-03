@@ -20,4 +20,16 @@ public class BookServiceImpl implements BookService {
 	public BookDto save(final BookDto bookDto) {
 		
 	}
+
+	@Override
+	public service.BookDto save(service.BookDto book) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public service.BookDto getById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

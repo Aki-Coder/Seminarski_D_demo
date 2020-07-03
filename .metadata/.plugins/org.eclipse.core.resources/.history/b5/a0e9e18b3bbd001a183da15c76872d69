@@ -2,7 +2,6 @@ package service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import dto.BookDto;
 import repository.BookRepository;
 
 //klasa koja implemantira service
@@ -14,10 +13,4 @@ public class BookServiceImpl implements BookService {
 	
 	//koristimo metode koje se u njemu nalaze
 	public BookRepository bookRepo;
-	
-	//prosledicemo dto objekat
-	@Override
-	public BookDto save(final BookDto bookDto) {
-		
-	}
 }
