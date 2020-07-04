@@ -32,7 +32,6 @@ public class BookController {
 	
 	//injectovali book service kako bi koristili potrebne metode od tamo
 	//inject moze i pored @autowierd i preko setera i konstruktora
-	//na neki nacin povezivanje objekata
 	BookService bookService;
 
 	//akcije vezane za knjigu kreiranje i pronalazanje na osnovu zadatog id

@@ -2,11 +2,12 @@ package com.example.vezbanje.demo.controller;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,10 +30,6 @@ public class BookController {
 	
 	//u kontroler ubaci service, da bi koristili njegove metode
 	@Autowired
-	
-	//injectovali book service kako bi koristili potrebne metode od tamo
-	//inject moze i pored @autowierd i preko setera i konstruktora
-	//na neki nacin povezivanje objekata
 	BookService bookService;
 
 	//akcije vezane za knjigu kreiranje i pronalazanje na osnovu zadatog id
@@ -53,8 +50,8 @@ public class BookController {
 	}
 	
 	@GetMapping(path= "/{id}",produces = APPLICATION_JSON_VALUE)
-	//@PathVariable kad gore u path dodamo {}parametar koji prosledjujemo
-	public ResponseEntity<BookEntity> getBook(@PathVariable final Long id){
+	//@PathParam kad gore u path dodamo {}parametar koji prosledjujemo
+	public ResponseEntity<BookEntity> getBook(@PathParam final Long id){
 		//iz servisa metoda
 		//uzmi knjigu na osnovu id
 		final BookEntity resposne = bookService.getById(id);

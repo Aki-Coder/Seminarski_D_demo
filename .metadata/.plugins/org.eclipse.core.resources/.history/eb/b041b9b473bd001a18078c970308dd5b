@@ -6,12 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.vezbanje.demo.dto.BookDto;
 import com.example.vezbanje.demo.model.BookEntity;
 import com.example.vezbanje.demo.service.BookService;
 
@@ -29,10 +30,6 @@ public class BookController {
 	
 	//u kontroler ubaci service, da bi koristili njegove metode
 	@Autowired
-	
-	//injectovali book service kako bi koristili potrebne metode od tamo
-	//inject moze i pored @autowierd i preko setera i konstruktora
-	//na neki nacin povezivanje objekata
 	BookService bookService;
 
 	//akcije vezane za knjigu kreiranje i pronalazanje na osnovu zadatog id
@@ -53,8 +50,8 @@ public class BookController {
 	}
 	
 	@GetMapping(path= "/{id}",produces = APPLICATION_JSON_VALUE)
-	//@PathVariable kad gore u path dodamo {}parametar koji prosledjujemo
-	public ResponseEntity<BookEntity> getBook(@PathVariable final Long id){
+	//@RequestParam parametar koji prosledjujemo
+	public ResponseEntity<BookEntity> getBook(@RequestParam final Long id){
 		//iz servisa metoda
 		//uzmi knjigu na osnovu id
 		final BookEntity resposne = bookService.getById(id);
